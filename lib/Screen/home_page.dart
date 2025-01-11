@@ -321,7 +321,7 @@ class HomePage extends StatelessWidget {
                     builder: (context,_,__) {
                        if(phone&&Devices.ios.iPad==devices[index].deviceInfo) return Container();
                       return  CustomButton(
-                        margin: EdgeInsets.symmetric(horizontal: 50),
+                        margin:  EdgeInsets.symmetric(horizontal: phone? 50 : 150 ),
                         height: 38, 
                         width: 38, 
                        onPressed: (){  

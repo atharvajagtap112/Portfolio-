@@ -63,7 +63,7 @@ class CurrentState  extends ChangeNotifier{
      final Uri emailUri = Uri.parse('https://mail.google.com/mail/?view=cm&fs=1&to=$gmail');
 
     if (await canLaunchUrl(emailUri)) {
-      await launchUrl(emailUri);
+      await launchUrl(emailUri, mode: LaunchMode.externalApplication);
     } else {
       throw 'Could not launch $emailUri';
     }

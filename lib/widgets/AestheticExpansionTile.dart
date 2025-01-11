@@ -57,7 +57,7 @@ class _TechAestheticExpansionTileState extends State<TechAestheticExpansionTile>
         duration: const Duration(milliseconds: 300),
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [

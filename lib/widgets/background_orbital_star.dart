@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class CosmicBackground extends StatelessWidget {
+  const CosmicBackground({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -20,10 +22,12 @@ class CosmicBackground extends StatelessWidget {
 }
 
 class BackgroundGradient extends StatelessWidget {
+  const BackgroundGradient({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: RadialGradient(
           center:
               Alignment(0.0, 1.5), // Centered horizontally, below the bottom
@@ -41,6 +45,8 @@ class BackgroundGradient extends StatelessWidget {
 }
 
 class ParticleEffect extends StatefulWidget {
+  const ParticleEffect({super.key});
+
   @override
   _ParticleEffectState createState() => _ParticleEffectState();
 }
@@ -56,7 +62,7 @@ class _ParticleEffectState extends State<ParticleEffect>
     particles = List.generate(30, (index) => Particle.random());
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 10),
+      duration: const Duration(seconds: 10),
     )..repeat();
   }
 
@@ -158,6 +164,8 @@ class ParticlePainter extends CustomPainter {
 }
 
 class OrbitalPaths extends StatelessWidget {
+  const OrbitalPaths({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
@@ -176,7 +184,7 @@ class OrbitalPathsPainter extends CustomPainter {
 
     // Adjust center point to be closer to bottom
     final center = Offset(size.width / 2, size.height + (size.height * 0.05));
-    final numberOfPaths = 6;
+    const numberOfPaths = 6;
 
     // Start with a much smaller initial radius
     for (int i = 0; i < numberOfPaths; i++) {
@@ -199,6 +207,8 @@ class OrbitalPathsPainter extends CustomPainter {
 }
 
 class MovingStars extends StatefulWidget {
+  const MovingStars({super.key});
+
   @override
   _MovingStarsState createState() => _MovingStarsState();
 }
@@ -282,7 +292,7 @@ class StarTrailPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = Colors.white.withOpacity(brightness)
-      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 1);
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1);
 
     // Calculate the path radius based on the star's assigned path
     final center = Offset(size.width / 2, size.height + (size.height * 0.05));
@@ -313,6 +323,8 @@ class StarTrailPainter extends CustomPainter {
 }
 
 class BgOrbittalStarDemo extends StatelessWidget {
+  const BgOrbittalStarDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

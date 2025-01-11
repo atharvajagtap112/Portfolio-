@@ -6,6 +6,6 @@ class BookAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RiveAnimation.asset("assets/rive/books_drop.riv");
+    return const RiveAnimation.asset("assets/rive/books_drop.riv");
   }
 }

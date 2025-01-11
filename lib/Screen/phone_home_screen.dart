@@ -95,9 +95,9 @@ class PhoneHomeScreen extends StatelessWidget {
 
 Future<void> _launchUrl(String url) async {
   
-final Uri _url = Uri.parse(url);
-  if (!await launchUrl(_url)) {
-    throw Exception('Could not launch $_url');
+final Uri url0 = Uri.parse(url);
+  if (!await launchUrl(url0)) {
+    throw Exception('Could not launch $url0');
   }
 }
 
@@ -108,6 +108,7 @@ Future<void> sendEmail() async {
     path: gmail,
     
   );
+  final Uri url= Uri.parse( 'https://mail.google.com/mail/?view=cm&fs=1&to=$gmail');
     if (!await launchUrl(emailUri)) {
       throw 'Could not launch $emailUri';
     } 

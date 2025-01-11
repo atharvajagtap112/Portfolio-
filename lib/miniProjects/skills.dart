@@ -17,7 +17,7 @@ class Skills extends StatelessWidget {
         child: Stack(
           
           children: [
-            Positioned(
+            const Positioned(
               top: -30,
               left: -10,
               child: SizedBox(
@@ -26,7 +26,7 @@ class Skills extends StatelessWidget {
                 child: RiveAnimation.asset("assets/rive/robot.riv", )),
             ),
             Column(children: [  
-             SizedBox(height: 85,),
+             const SizedBox(height: 85,),
             // Technical Skills Section
             Center(
               child: Container(
@@ -105,10 +105,10 @@ class SkillCard extends StatefulWidget {
   final int index;
 
   const SkillCard({
-    Key? key,
+    super.key,
     required this.skill,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   State<SkillCard> createState() => _SkillCardState();
@@ -182,10 +182,10 @@ class LanguageCard extends StatefulWidget {
   final int index;
 
   const LanguageCard({
-    Key? key,
+    super.key,
     required this.language,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   State<LanguageCard> createState() => _LanguageCardState();

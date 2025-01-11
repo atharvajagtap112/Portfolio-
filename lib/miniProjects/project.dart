@@ -8,7 +8,7 @@ import 'package:portfolio/Models/project_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProjectsScreen extends StatefulWidget {
-  const ProjectsScreen({Key? key}) : super(key: key);
+  const ProjectsScreen({super.key});
 
   @override
   State<ProjectsScreen> createState() => _ProjectsScreenState();
@@ -70,7 +70,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
 class ProjectCard extends StatefulWidget {
   final ProjectModel project;
 
-  const ProjectCard({Key? key, required this.project}) : super(key: key);
+  const ProjectCard({super.key, required this.project});
 
   @override
   State<ProjectCard> createState() => _ProjectCardState();
@@ -123,7 +123,7 @@ class _ProjectCardState extends State<ProjectCard> with SingleTickerProviderStat
               Positioned.fill(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
-                  child: Opacity(
+                  child: const Opacity(
                     opacity: 0.3,
                     child: RiveAnimation.asset(
                       'assets/rive/new_file.riv',

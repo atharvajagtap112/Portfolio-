@@ -15,7 +15,7 @@ class Education extends StatelessWidget {
         children: [
           // Background gradient
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -27,7 +27,7 @@ class Education extends StatelessWidget {
             ),
           ),
           
-          Positioned(
+          const Positioned(
             right: -120,
             bottom: -250,
             child: SizedBox(
@@ -38,13 +38,13 @@ class Education extends StatelessWidget {
           ),
            
           ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             shrinkWrap: true,
             itemCount: education.length,
             itemBuilder: (context, index) {
               final experience = education[index];
               return Container(
-                margin: EdgeInsets.only(bottom: 20),
+                margin: const EdgeInsets.only(bottom: 20),
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.9),
                   borderRadius: BorderRadius.circular(20),
@@ -57,7 +57,7 @@ class Education extends StatelessWidget {
                       color: experience.color.withOpacity(0.08),
                       blurRadius: 20,
                       spreadRadius: 2,
-                      offset: Offset(0, 4),
+                      offset: const Offset(0, 4),
                     ),
                   ],
                 ),
@@ -66,8 +66,8 @@ class Education extends StatelessWidget {
                     dividerColor: Colors.transparent,
                   ),
                   child: ExpansionTile(
-                    tilePadding: EdgeInsets.all(10),
-                    childrenPadding: EdgeInsets.all(10),
+                    tilePadding: const EdgeInsets.all(10),
+                    childrenPadding: const EdgeInsets.all(10),
                     leading: Container(
                       width: 4,
                       height: 100,
@@ -95,11 +95,11 @@ class Education extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
-                        color: Color(0xFF2D3436),
+                        color: const Color(0xFF2D3436),
                       ),
                     ),
                     subtitle: Container(
-                      margin: EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -111,9 +111,9 @@ class Education extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 5, vertical: 6),
+                            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 6),
                             decoration: BoxDecoration(
                               color: experience.color.withOpacity(0.08),
                               borderRadius: BorderRadius.circular(30),
@@ -130,7 +130,7 @@ class Education extends StatelessWidget {
                                   size: 14,
                                   color: experience.color.withOpacity(0.8),
                                 ),
-                                SizedBox(width: 6),
+                                const SizedBox(width: 6),
                                 Text(
                                   '${experience.startDate} - ${experience.endDate}',
                                   style: GoogleFonts.poppins(
@@ -138,13 +138,13 @@ class Education extends StatelessWidget {
                                     color: experience.color.withOpacity(0.8),
                                   ),
                                 ),
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                                 Icon(
                                   Icons.location_on,
                                   size: 14,
                                   color: experience.color.withOpacity(0.8),
                                 ),
-                                SizedBox(width: 2),
+                                const SizedBox(width: 2),
                                 SizedBox(
                                   width: 42,
                                   child: Text(
@@ -164,12 +164,12 @@ class Education extends StatelessWidget {
                     ),
                     children: experience.bulletPoints.map((bulletPoint) {
                       return Padding(
-                        padding: EdgeInsets.only(bottom: 15, left: 15),
+                        padding: const EdgeInsets.only(bottom: 15, left: 15),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: 8),
+                              margin: const EdgeInsets.only(top: 8),
                               width: 6,
                               height: 6,
                               decoration: BoxDecoration(
@@ -184,7 +184,7 @@ class Education extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(width: 15),
+                            const SizedBox(width: 15),
                             Expanded(
                               child: Text(
                                 bulletPoint,
@@ -192,7 +192,7 @@ class Education extends StatelessWidget {
                                   fontSize: 14,
                                   height: 1.5,
                                   letterSpacing: 0.3,
-                                  color: Color(0xFF2D3436).withOpacity(0.9),
+                                  color: const Color(0xFF2D3436).withOpacity(0.9),
                                 ),
                               ),
                             ),

@@ -52,7 +52,7 @@ class _ExperienceState extends State<Experience> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: jobExperiences.length,
                   itemBuilder: (context, index) {

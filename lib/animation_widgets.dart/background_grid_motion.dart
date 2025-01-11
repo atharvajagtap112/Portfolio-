@@ -6,10 +6,10 @@ class RetroGridBackground extends StatefulWidget {
   final Widget? child;
 
   const RetroGridBackground({
-    Key? key,
+    super.key,
     this.angle = 65,
     this.child,
-  }) : super(key: key);
+  });
 
   @override
   State<RetroGridBackground> createState() => _RetroGridBackgroundState();
@@ -51,7 +51,7 @@ class _RetroGridBackgroundState extends State<RetroGridBackground>
         return Container(
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Stack(
@@ -175,7 +175,7 @@ class GridPainter extends CustomPainter {
 
 // Usage Example
 class RetroGridDemo extends StatelessWidget {
-  const RetroGridDemo({Key? key}) : super(key: key);
+  const RetroGridDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
