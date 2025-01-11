@@ -1,0 +1,251 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:lottie/lottie.dart';
+import 'package:portfolio/Models/education_model.dart';
+import 'package:portfolio/const/data.dart';
+
+class Education extends StatelessWidget {
+  const Education({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.blue.shade50,
+              Colors.purple.shade50,
+            ],
+          ),
+        ),
+        child: Stack(
+          children: [
+            // Phone Frame
+            Container(
+              margin: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(40),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 20,
+                    spreadRadius: 5,
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(40),
+                child: _buildEducationContent(),
+              ),
+            ),
+            // Phone Notch
+            Positioned(
+              top: 16,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 25,
+                margin: const EdgeInsets.symmetric(horizontal: 120),
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEducationContent() {
+    return ListView(
+      physics: const BouncingScrollPhysics(),
+      children: [
+        const SizedBox(height: 50),
+        Center(
+          child: Lottie.asset(
+            'assets/animations/education-animation.json',  // Add an education-themed Lottie animation
+            height: 150,
+          ),
+        ),
+        const SizedBox(height: 20),
+        AnimationLimiter(
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: education.length,
+            itemBuilder: (context, index) {
+              final exp = education[index];
+              return AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 500),
+                child: SlideAnimation(
+                  verticalOffset: 50.0,
+                  child: FadeInAnimation(
+                    child: _buildEducationCard(exp),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: 30),
+      ],
+    );
+  }
+
+  Widget _buildEducationCard(EducationModel exp) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: exp.color.withOpacity(0.1),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: ExpansionTile(
+        tilePadding: const EdgeInsets.all(16),
+        expandedCrossAxisAlignment: CrossAxisAlignment.start,
+        leading: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (exp.logoPath.isNotEmpty)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  exp.logoPath,
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.cover,
+                ),
+              ),
+          ],
+        ),
+        title: Text(
+          exp.title,
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 4),
+            Text(
+              exp.company,
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                color: Colors.grey[600],
+              ),
+            ),
+            const SizedBox(height: 4),
+            Row(
+              children: [
+                Icon(Icons.calendar_today, size: 14, color: exp.color),
+                const SizedBox(width: 4),
+                Text(
+                  '${exp.startDate} - ${exp.endDate}',
+                  style: GoogleFonts.poppins(fontSize: 12),
+                ),
+              ],
+            ),
+            if (exp.grade.isNotEmpty) ...[
+              const SizedBox(height: 4),
+              Row(
+                children: [
+                  Icon(Icons.grade, size: 14, color: exp.color),
+                  const SizedBox(width: 4),
+                  Text(
+                    exp.grade,
+                    style: GoogleFonts.poppins(fontSize: 12),
+                  ),
+                ],
+              ),
+            ],
+          ],
+        ),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Divider(),
+                if (exp.bulletPoints.isNotEmpty) ...[
+                  Text(
+                    'Highlights',
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  ...exp.bulletPoints.map((point) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(Icons.arrow_right, color: exp.color, size: 20),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                point,
+                                style: GoogleFonts.poppins(fontSize: 13),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )),
+                ],
+                if (exp.skills.isNotEmpty) ...[
+                  const SizedBox(height: 16),
+                  Text(
+                    'Skills Gained',
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: exp.skills.map((skill) => Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: exp.color.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        skill,
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          color: exp.color,
+                        ),
+                      ),
+                    )).toList(),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
